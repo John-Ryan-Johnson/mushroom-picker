@@ -21,7 +21,7 @@ componentDidMount() {
 render() {
   return (
       <div className="App">
-        <h1>McCabe Mushroom Marsh</h1>
+        <h1>Macabre Mushroom Marsh</h1>
         <button className="btn btn-dark">Pick A Mushroom</button>
         <div>
           <Basket basket={this.state.basket} />

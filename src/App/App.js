@@ -1,15 +1,37 @@
 import React from 'react';
 import './App.scss';
 
+import mushroomData from '../helpers/data/mushroomData';
+
+import Basket from '../components/Basket/Basket';
+import Forest from '../components/Forest/Forest';
+
 class App extends React.Component {
-  render() {
-    return (
+state = {
+  mushrooms: [],
+  basket: [],
+}
+
+componentDidMount() {
+  const mushrooms = mushroomData.getMushrooms();
+  const basket = mushroomData.getBasket();
+  this.setState({ mushrooms, basket });
+}
+
+render() {
+  return (
       <div className="App">
-        <h2>Inside Mushroom Picker</h2>
-        <button className="btn btn-dark">Mushroom</button>
+        <h1>McCabe Mushroom Marsh</h1>
+        <button className="btn btn-dark">Pick A Mushroom</button>
+        <div>
+          <Basket basket={this.state.basket} />
+        </div>
+        <div className='forest'>
+          <Forest mushrooms={this.state.mushrooms} />
+        </div>
       </div>
-    );
-  }
+  );
+}
 }
 
 export default App;

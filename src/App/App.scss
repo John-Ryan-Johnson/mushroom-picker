@@ -6,13 +6,18 @@
   -o-background-size: cover;
   background-size: cover;
   height: 100vh;
-  position: relative;
+  overflow-x: scroll;
 }
 
-.forest {
-  position: absolute;
-  bottom: 5px;
-  width: 60%;
+.divTitleForest {
+  letter-spacing: 4px;
 }
+
+.divTitleBasket {
+  color: whitesmoke;
+  letter-spacing: 4px;
+}
+
+
 
 

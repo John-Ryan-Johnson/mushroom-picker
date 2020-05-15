@@ -7,20 +7,18 @@ import Mushroom from '../Mushroom/Mushroom';
 
 class Basket extends React.Component {
   static propTypes = {
-    basket: PropTypes.arrayOf(mushroomShape.mushroomShape),
+    mushrooms: PropTypes.arrayOf(mushroomShape.mushroomShape),
   }
 
   render() {
-    const { basket } = this.props;
-    const buildBasket = basket.map((mushroom) => (
+    const { mushrooms } = this.props;
+    const buildBasket = mushrooms.map((mushroom) => (
       <Mushroom key={mushroom.id} mushroom={mushroom} />
     ));
 
     return (
-      <div className="Basket">
-        <div className="d-flex flex-wrap">
-          {buildBasket}
-        </div>
+      <div className="Basket d-flex flex-wrap">
+        {buildBasket}
       </div>
     );
   }

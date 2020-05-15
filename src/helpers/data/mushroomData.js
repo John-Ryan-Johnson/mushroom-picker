@@ -138,7 +138,7 @@ const mushrooms = [
     id: 'mushroom16',
     name: 'Maitake',
     description: 'The Japanese maitake mushroom, also called, "hen of the woods", has several health benefits. Maitakes have anticancer and antiviral properties.',
-    imgUrl: 'https://lh3.googleusercontent.com/proxy/4Gm3d1m07N9-1MdZAWOV3INLJphIFsZt_yIAuP0AbK-xhrEsyk_Y0teoCC2h7_4lFbXf84_XJEotkN3_CFthPMKhpQb7bo_YO4T28goaTPfcAuKeTa2fSue00KeaA64Psb0O1t6XiyI',
+    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Eikhaas.JPG/1200px-Eikhaas.JPG',
     isMagic: false,
     isPoisonous: false,
     isDeadly: false,
@@ -181,15 +181,72 @@ const mushrooms = [
   },
 ];
 
-const basket = [];
+let basket = [];
 
 const getMushrooms = () => mushrooms;
 
 const getBasket = () => basket;
 
+const getRegularMushrooms = () => {
+  const regularMushrooms = [];
+  const goodShrooms = getMushrooms();
+  goodShrooms.forEach((shroom) => {
+    if (shroom.isDeadly === false && shroom.isMagic === false && shroom.isPoisonous === false) {
+      regularMushrooms.push(shroom);
+    }
+  });
+  return regularMushrooms;
+};
+
+const checkBasket = () => {
+  basket = getBasket();
+  const regularMushrooms = getRegularMushrooms();
+  const basketCheck = regularMushrooms.map((item) => {
+    const isIncluded = basket.includes((item));
+    return isIncluded;
+  });
+  const isWinner = basketCheck.every((x) => x === true);
+  if (isWinner) {
+    // eslint-disable-next-line no-alert
+    alert('You Won !!');
+  }
+};
+
+const removeTwoMushrooms = () => {
+  basket = getBasket();
+  basket.splice(0, 2);
+  return basket;
+};
+
+const emptyBasket = () => {
+  basket = getBasket();
+  basket = [];
+  return basket;
+};
+
+const fillBasket = () => {
+  mushrooms.forEach((mushroom) => {
+    if (mushrooms.isDeadly === false && mushrooms.isMagic === false && mushrooms.isPoisonous === false) {
+      basket.push(mushroom);
+    }
+    return basket;
+  });
+};
+
+
 const pickAMushroom = () => {
   const randMushroom = mushrooms[Math.floor(Math.random() * mushrooms.length)];
-  basket.push(randMushroom);
+  if (randMushroom.isPoisonous === true) {
+    removeTwoMushrooms();
+  } else if (randMushroom.isDeadly === true) {
+    emptyBasket();
+  } else if (randMushroom.isMagic === true) {
+    fillBasket();
+  } else {
+    basket.push(randMushroom);
+  }
+  checkBasket();
+  getRegularMushrooms();
 };
 
 export default { getMushrooms, getBasket, pickAMushroom };

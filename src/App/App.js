@@ -4,14 +4,12 @@ import './App.scss';
 import mushroomData from '../helpers/data/mushroomData';
 import Basket from '../components/Basket/Basket';
 import Forest from '../components/Forest/Forest';
-import mushroomShape from '../helpers/propz/mushroomShape';
 
 
 class App extends React.Component {
 state = {
   mushrooms: [],
   basket: [],
-  mushroom: mushroomShape.mushroomShape,
 }
 
 componentDidMount() {

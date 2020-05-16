@@ -26,10 +26,15 @@ pickAMushroom = (e) => {
 }
 
 render() {
+  const { mushrooms } = this.state;
   return (
       <div className="App">
         <h1>Macabre Mushroom Marsh</h1>
-        <button className="btn btn-dark" onClick={this.pickAMushroom}>Pick A Mushroom</button>
+        {mushrooms.length === 0 ? (
+        <button className="btn btn-dark" onClick={this.pickAMushroom} id="pickButton" disabled>Pick A Mushroom</button>)
+          : (
+        <button className="btn btn-dark" onClick={this.pickAMushroom} id="pickButton">Pick A Mushroom</button>)
+        }
         <div className="container-fluid mt-3">
           <div className="row">
             <div className="col-6">

@@ -187,12 +187,27 @@ const getMushrooms = () => mushrooms;
 
 const getBasket = () => basket;
 
+const pickedPoisonousMushroom = (pickedMushroom) => {
+  if (basket.length < 2) {
+    basket.splice(0, 1);
+  } else {
+    basket.splice(0, 2);
+  }
+  mushrooms.push(pickedMushroom);
+};
+
+
 const pickAMushroom = (mushroomId) => {
   const randomMushroom = Math.floor(Math.random() * mushrooms.length);
   const pickedMushroom = mushrooms[randomMushroom];
   const pickedMushroomIndex = mushrooms.indexOf(pickedMushroom);
   mushrooms.splice(pickedMushroomIndex, 1);
-  basket.push(pickedMushroom);
+  if (pickedMushroom.isPoisonous) {
+    pickedPoisonousMushroom(pickedMushroom);
+    console.error(pickedMushroom);
+  } else {
+    basket.push(pickedMushroom);
+  }
 };
 
 export default { getMushrooms, getBasket, pickAMushroom };

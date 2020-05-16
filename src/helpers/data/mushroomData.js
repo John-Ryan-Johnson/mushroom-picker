@@ -181,72 +181,18 @@ const mushrooms = [
   },
 ];
 
-let basket = [];
+const basket = [];
 
 const getMushrooms = () => mushrooms;
 
 const getBasket = () => basket;
 
-const getRegularMushrooms = () => {
-  const regularMushrooms = [];
-  const goodShrooms = getMushrooms();
-  goodShrooms.forEach((shroom) => {
-    if (shroom.isDeadly === false && shroom.isMagic === false && shroom.isPoisonous === false) {
-      regularMushrooms.push(shroom);
-    }
-  });
-  return regularMushrooms;
-};
-
-const checkBasket = () => {
-  basket = getBasket();
-  const regularMushrooms = getRegularMushrooms();
-  const basketCheck = regularMushrooms.map((item) => {
-    const isIncluded = basket.includes((item));
-    return isIncluded;
-  });
-  const isWinner = basketCheck.every((x) => x === true);
-  if (isWinner) {
-    // eslint-disable-next-line no-alert
-    alert('You Won !!');
-  }
-};
-
-const removeTwoMushrooms = () => {
-  basket = getBasket();
-  basket.splice(0, 2);
-  return basket;
-};
-
-const emptyBasket = () => {
-  basket = getBasket();
-  basket = [];
-  return basket;
-};
-
-const fillBasket = () => {
-  mushrooms.forEach((mushroom) => {
-    if (mushrooms.isDeadly === false && mushrooms.isMagic === false && mushrooms.isPoisonous === false) {
-      basket.push(mushroom);
-    }
-    return basket;
-  });
-};
-
-
-const pickAMushroom = () => {
-  const randMushroom = mushrooms[Math.floor(Math.random() * mushrooms.length)];
-  if (randMushroom.isPoisonous === true) {
-    removeTwoMushrooms();
-  } else if (randMushroom.isDeadly === true) {
-    emptyBasket();
-  } else if (randMushroom.isMagic === true) {
-    fillBasket();
-  } else {
-    basket.push(randMushroom);
-  }
-  checkBasket();
-  getRegularMushrooms();
+const pickAMushroom = (mushroomId) => {
+  const randomMushroom = Math.floor(Math.random() * mushrooms.length);
+  const pickedMushroom = mushrooms[randomMushroom];
+  const pickedMushroomIndex = mushrooms.indexOf(pickedMushroom);
+  mushrooms.splice(pickedMushroomIndex, 1);
+  basket.push(pickedMushroom);
 };
 
 export default { getMushrooms, getBasket, pickAMushroom };

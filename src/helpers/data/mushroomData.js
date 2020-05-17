@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 const mushrooms = [
   {
     id: 'mushroom1',
@@ -187,9 +189,56 @@ const getMushrooms = () => mushrooms;
 
 const getBasket = () => basket;
 
+const poisonAlert = () => {
+  mushrooms.forEach((mushroom) => {
+    if (mushroom.isPoisonous === true) {
+      Swal.fire({
+        title: 'OH NO!!',
+        text: 'You picked a poisonous mushroom!',
+        background: 'black',
+        imageUrl: 'https://bestwaytogetridofmouseinhouse.com/wp-content/uploads/2017/11/poison1.jpg',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      });
+    }
+  });
+};
+
+const deadlyAlert = () => {
+  mushrooms.forEach((mushroom) => {
+    if (mushroom.isPoisonous === true) {
+      Swal.fire({
+        title: 'You picked a deadly mushroom!',
+        text: 'YOU LOST!!',
+        background: 'black',
+        imageUrl: 'https://www.freepngimg.com/thumb/grim_reaper/29957-5-grim-reaper-transparent-background.png',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      });
+    }
+  });
+};
+
+const magicAlert = () => {
+  mushrooms.forEach((mushroom) => {
+    if (mushroom.isPoisonous === true) {
+      Swal.fire({
+        title: 'You picked a magic mushroom!',
+        text: 'YOU WON!!',
+        background: 'black',
+        imageUrl: 'https://p7.hiclipart.com/preview/421/763/732/lethal-league-sportsfriends-game-kartoshka-flat-file-you-win.jpg',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      });
+    }
+  });
+};
+
 const pickedPoisonousMushroom = (pickedMushroom) => {
-  // eslint-disable-next-line no-alert
-  alert('You picked a poisonous mushroom and two mushrooms died!!');
+  poisonAlert();
   if (basket.length < 1) {
     basket.splice(0, 0);
   } else if (basket.length < 2) {
@@ -201,19 +250,15 @@ const pickedPoisonousMushroom = (pickedMushroom) => {
 };
 
 const pickedDeadlyMushroom = (pickedMushroom) => {
-  // eslint-disable-next-line no-alert
-  alert('You picked a deadly mushroom!! YOU LOST!!');
   basket = [];
-  window.location.reload();
+  deadlyAlert();
 };
 
 const pickedMagicMushroom = () => {
-  // eslint-disable-next-line no-alert
-  alert('You picked the magic mushroom. YOU WON!!!!');
+  magicAlert();
   mushrooms.forEach((mushroom) => {
     if (mushroom.isPoisonous === false && mushroom.isDeadly === false && mushroom.isMagic === false) {
       basket = [];
-      window.location.reload();
     }
   });
 };

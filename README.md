@@ -27,6 +27,6 @@ Picked Magic Mushroom:
 
 # How To Run:
 1. Clone down this repo
-2. Make sure you have http-server installed via npm. If not, get it here.
+2. Make sure you have http-server installed via npm. If not, get it [https://www.npmjs.com/package/http-server]here.
 3. On your command line, run hs -p 9999
 4. In your browser, navigate to http://localhost:9999

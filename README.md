@@ -5,12 +5,12 @@
 This application was created using React (state and props). Use this app to go picking mushrooms from the forest. It would be ideal to only pick the good mushrooms, however, they are chosen randomly. There are also poisonous mushrooms, that when picked, causes the poison one and two others to die and be removed from your basket. There are also deadly mushrooms, that when picked, causes all of the mushrooms in your basket to die and be removed. There is also a magic mushroom. If you pick that one your basket gets filled with all the good mushrooms and YOU WIN! You can also win by filling your basket with only good mushrooms. GOOD LUCK!!
 
 # Technologies Used:
-React: Learn state and props(create-react-app)
-Jsx: For HTML
-CSS and Sass: For styling
-JavaScript(vanilla): For functionality
-SweetAlert2: For custom alerts
-Bootstrap: For cards
+* React: Learn state and props(create-react-app)
+* Jsx: For HTML
+* CSS and Sass: For styling
+* JavaScript(vanilla): For functionality
+* SweetAlert2: For custom alerts
+* Bootstrap: For cards
 
 # Screenshots:
 Start Screen:

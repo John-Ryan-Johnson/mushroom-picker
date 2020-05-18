@@ -216,6 +216,8 @@ const deadlyAlert = () => {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Custom image',
+      }).then((result) => {
+        window.location.reload();
       });
     }
   });
@@ -232,6 +234,8 @@ const magicAlert = () => {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Custom image',
+      }).then((result) => {
+        window.location.reload();
       });
     }
   });
@@ -249,18 +253,14 @@ const pickedPoisonousMushroom = (pickedMushroom) => {
   mushrooms.push(pickedMushroom);
 };
 
-const pickedDeadlyMushroom = (pickedMushroom) => {
+const pickedDeadlyMushroom = () => {
   basket = [];
   deadlyAlert();
 };
 
 const pickedMagicMushroom = () => {
   magicAlert();
-  mushrooms.forEach((mushroom) => {
-    if (mushroom.isPoisonous === false && mushroom.isDeadly === false && mushroom.isMagic === false) {
-      basket = [];
-    }
-  });
+  basket = [];
 };
 
 
@@ -271,12 +271,9 @@ const pickAMushroom = () => {
   mushrooms.splice(pickedMushroomIndex, 1);
   if (pickedMushroom.isPoisonous) {
     pickedPoisonousMushroom(pickedMushroom);
-    console.error('poisonous', pickedMushroom);
   } else if (pickedMushroom.isDeadly) {
-    console.error('deadly', pickedMushroom);
     pickedDeadlyMushroom(pickedMushroom);
   } else if (pickedMushroom.isMagic) {
-    console.error('magic', pickedMushroom);
     pickedMagicMushroom(pickedMushroom);
   } else {
     basket.push(pickedMushroom);
